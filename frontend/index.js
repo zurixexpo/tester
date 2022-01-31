@@ -3,7 +3,13 @@ const SNAKE_COLOUR = '#c2c2c2';
 const FOOD_COLOUR = '#e66916';
 
 const socket = io('https://snake-testapp.herokuapp.com/');
+const name = prompt("enter your name");
+socket.emit('message', name);
 
+
+socket.on('user-joined', data =>{
+	console.log('name' + data);
+});
 socket.on('init', handleInit);
 socket.on('gameState', handleGameState);
 socket.on('gameOver', handleGameOver);
